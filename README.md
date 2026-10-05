@@ -1,5 +1,7 @@
 # kadbench
 
+![kadbench: can a model tell when a Kademlia lookup is under attack?](docs/banner.png)
+
 A Kaggle benchmark for whether a model can tell if a Kademlia lookup is under an eclipse attack, built so the obvious clue (IP clustering) and the real clue (ID distribution) disagree.
 
 Entry for the [DEV x Kaggle Benchmarking Challenge](https://dev.to/devteam/join-the-kaggle-benchmarking-challenge-2500-in-prizes-for-five-winners-18ml). Kaggle benchmark: _link added once published_.
@@ -7,6 +9,8 @@ Entry for the [DEV x Kaggle Benchmarking Challenge](https://dev.to/devteam/join-
 ## Why this benchmark
 
 Every eclipse-attack explainer says "look for many peers from one subnet". That is the shortcut. The real signal is that Sybil IDs sit implausibly close to the key compared with what `n` uniformly random honest IDs would produce. The verdict task is a 2x2 where those two signals are decoupled, so a model that only reads the IP column scores at chance on half the cells. Every item comes from a seeded generator with exact ground truth, so nothing can have been memorised.
+
+![Seeded generator, items with exact ground truth, models on Kaggle, assertions with no judge, decoy gap; the K-L baseline is scored on the same items](docs/pipeline.png)
 
 ## Layout
 
@@ -19,6 +23,7 @@ dist/                built single-file tasks: the thing you paste into a Kaggle 
 tests/               ground truth re-derived by an independent route, plus the built task run
                      end to end against scripted models
 build.py             inlines kadbench/gen.py into each task source and writes dist/
+docs/                README figures and the logo (docs/logo.png, for the Kaggle and dev.to cards)
 ```
 
 ## Use
@@ -48,10 +53,14 @@ Task 1 is built and tested in `dist/`. The other families generate and verify bu
 
 Each item is the 20 closest peers a lookup returned, with the network size and the share of honest nodes at one hosting provider stated in the prompt.
 
+![A key, its 20 closest peers, and a ring of Sybils ground to sit inside the honest radius, next to the peer_id / cpl / ip table the model sees](docs/verdict-item.png)
+
 |                     | provider share 50% | provider share 5% |
 |---------------------|--------------------|-------------------|
 | Sybil IDs inserted  | obvious attack     | stealth attack    |
 | honest IDs only     | red herring        | clean             |
+
+![The 2x2: obvious attack and clean agree on both clues; stealth attack and red herring are where IP clustering and ID distribution disagree](docs/verdict-2x2.png)
 
 - The count of listed peers inside the provider /16 is drawn from the stated share whether or not the set is attacked, so the IP column alone carries no label. `tests/test_items.py::test_ip_column_carries_no_label` checks that the best IP-only lookup table scores within 4 points of a coin flip.
 - Decoy gap = accuracy on (obvious attack, clean) minus accuracy on (stealth attack, red herring).
