@@ -660,25 +660,6 @@ wheels = [
 ]
 
 [[package]]
-name = "eclipsed"
-version = "0.1.0"
-source = { virtual = "." }
-dependencies = [
-    { name = "kaggle-benchmarks" },
-]
-
-[package.dev-dependencies]
-dev = [
-    { name = "pytest" },
-]
-
-[package.metadata]
-requires-dist = [{ name = "kaggle-benchmarks", specifier = ">=0.6.1" }]
-
-[package.metadata.requires-dev]
-dev = [{ name = "pytest", specifier = ">=9.1.1" }]
-
-[[package]]
 name = "executing"
 version = "2.2.1"
 source = { registry = "https://pypi.org/simple" }
@@ -1409,6 +1390,25 @@ sdist = { url = "https://files.pythonhosted.org/packages/21/8b/e739cf9066ad5037a
 wheels = [
     { url = "https://files.pythonhosted.org/packages/33/ef/6d27fc118f58cb24886da413545a7efb0853d405fddbfd8b2d9ac09fbed4/jupyterlab_widgets-3.0.17-py3-none-any.whl", hash = "sha256:40ac1e9955acf116c4d995d9bfa082d86ad9ec6d91c4f134827cf5e0a5eb75e0", size = 217292, upload-time = "2026-08-18T08:52:15.47Z" },
 ]
+
+[[package]]
+name = "kadbench"
+version = "0.1.0"
+source = { virtual = "." }
+dependencies = [
+    { name = "kaggle-benchmarks" },
+]
+
+[package.dev-dependencies]
+dev = [
+    { name = "pytest" },
+]
+
+[package.metadata]
+requires-dist = [{ name = "kaggle-benchmarks", specifier = ">=0.6.1" }]
+
+[package.metadata.requires-dev]
+dev = [{ name = "pytest", specifier = ">=9.1.1" }]
 
 [[package]]
 name = "kaggle-benchmarks"

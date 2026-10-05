@@ -1,4 +1,4 @@
-# Eclipsed?
+# kadbench
 
 A Kaggle benchmark for whether a model can tell if a Kademlia lookup is under an eclipse attack, built so the obvious clue (IP clustering) and the real clue (ID distribution) disagree.
 
@@ -11,22 +11,22 @@ Every eclipse-attack explainer says "look for many peers from one subnet". That 
 ## Layout
 
 ```
-eclipsed/            library, standard library only so it can be inlined into a Kaggle cell
+kadbench/            library, standard library only so it can be inlined into a Kaggle cell
   gen.py             seeded item generator: xor, bucket, verdict (+ verdict_sweep), admission
   baseline.py        K-L divergence detector and the IP-only shortcut, as reference points
 tasks/               Kaggle task sources, one file per task; they call the generator by name
 dist/                built single-file tasks: the thing you paste into a Kaggle benchmark notebook
 tests/               ground truth re-derived by an independent route, plus the built task run
                      end to end against scripted models
-build.py             inlines eclipsed/gen.py into each task source and writes dist/
+build.py             inlines kadbench/gen.py into each task source and writes dist/
 ```
 
 ## Use
 
 ```bash
 uv sync                                   # Python 3.12, kaggle-benchmarks, pytest
-uv run python -m eclipsed.gen --out items # dump every family as JSONL
-uv run python -m eclipsed.baseline        # reference detectors on the 2x2 and the stealth sweep
+uv run python -m kadbench.gen --out items # dump every family as JSONL
+uv run python -m kadbench.baseline        # reference detectors on the 2x2 and the stealth sweep
 uv run python build.py                    # rebuild dist/ after editing sources
 uv run pytest                             # ~1 min
 ```
@@ -63,7 +63,7 @@ Reference points on 400 items:
 | K-L baseline  | 1.00    | 1.00    | 0.98        | 1.00  | 0.01      |
 | IP heuristic  | 1.00    | 0.02    | 0.01        | 1.00  | 0.98      |
 
-`uv run python -m eclipsed.baseline` also prints the baseline's detection rate across attacker stealth (grind bits by Sybil count).
+`uv run python -m kadbench.baseline` also prints the baseline's detection rate across attacker stealth (grind bits by Sybil count).
 
 ## License
 

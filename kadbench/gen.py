@@ -1,4 +1,4 @@
-"""Eclipsed? -- seeded item generator for the Kademlia eclipse benchmark.
+"""kadbench -- seeded item generator for the Kademlia eclipse benchmark.
 
 Standard library only, so the whole module can be inlined into a Kaggle task.
 Every item carries its own prompt and exact ground truth; nothing is judged.

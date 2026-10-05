@@ -1,8 +1,8 @@
-# Built by build.py from eclipsed/gen.py + tasks/task1_xor_distance.py. Edit the sources, not this file.
+# Built by build.py from kadbench/gen.py + tasks/task1_xor_distance.py. Edit the sources, not this file.
 
 # %%
 # Item generator (standard library only)
-"""Eclipsed? -- seeded item generator for the Kademlia eclipse benchmark.
+"""kadbench -- seeded item generator for the Kademlia eclipse benchmark.
 
 Standard library only, so the whole module can be inlined into a Kaggle task.
 Every item carries its own prompt and exact ground truth; nothing is judged.
@@ -480,7 +480,7 @@ def admission_items(n: int = 64, seed: int = 2026) -> list[dict]:
 
 
 # %% [markdown]
-# # Eclipsed? Task 1: XOR distance
+# # kadbench Task 1: XOR distance
 #
 # Pick the peer closest to a key under Kademlia's XOR metric. Half the items
 # are traps: the peer that is closest as an ordinary number is not the
@@ -572,7 +572,7 @@ def summarise(res: pd.DataFrame) -> dict:
 
 # %%
 @kbench.task(
-    name="Eclipsed 1: XOR distance",
+    name="kadbench 1: XOR distance",
     description="Pick the XOR-closest peer to a key; half the items have a numerically closer decoy.",
 )
 def xor_distance(llm) -> tuple[float, float]:

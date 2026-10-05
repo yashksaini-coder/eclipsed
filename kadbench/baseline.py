@@ -13,7 +13,7 @@ import math
 import random
 from collections import Counter
 
-from eclipsed.gen import BITS, K, honest_closest, verdict_items, verdict_sweep
+from kadbench.gen import BITS, K, honest_closest, verdict_items, verdict_sweep
 
 CONFLICT = ("stealth_attack", "red_herring")
 AGREE = ("obvious_attack", "clean")

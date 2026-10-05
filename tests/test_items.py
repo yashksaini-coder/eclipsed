@@ -6,8 +6,8 @@ import ipaddress
 import random
 import re
 
-from eclipsed import baseline
-import eclipsed.gen as g
+from kadbench import baseline
+import kadbench.gen as g
 
 
 def bits(h):

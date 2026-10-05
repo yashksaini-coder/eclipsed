@@ -1,5 +1,5 @@
 # %% [markdown]
-# # Eclipsed? Task 1: XOR distance
+# # kadbench Task 1: XOR distance
 #
 # Pick the peer closest to a key under Kademlia's XOR metric. Half the items
 # are traps: the peer that is closest as an ordinary number is not the
@@ -91,7 +91,7 @@ def summarise(res: pd.DataFrame) -> dict:
 
 # %%
 @kbench.task(
-    name="Eclipsed 1: XOR distance",
+    name="kadbench 1: XOR distance",
     description="Pick the XOR-closest peer to a key; half the items have a numerically closer decoy.",
 )
 def xor_distance(llm) -> tuple[float, float]:
