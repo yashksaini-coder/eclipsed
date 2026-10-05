@@ -2,6 +2,8 @@
 
 ![kadbench: can a model tell when a Kademlia lookup is under attack?](docs/banner.png)
 
+[![Sponsor @yashksaini-coder on GitHub](https://img.shields.io/badge/Sponsor-%E2%9D%A4-ea4aaa?logo=githubsponsors&logoColor=white)](https://github.com/sponsors/yashksaini-coder)
+
 A Kaggle benchmark for whether a model can tell if a Kademlia lookup is under an eclipse attack, built so the obvious clue (IP clustering) and the real clue (ID distribution) disagree.
 
 Entry for the [DEV x Kaggle Benchmarking Challenge](https://dev.to/devteam/join-the-kaggle-benchmarking-challenge-2500-in-prizes-for-five-winners-18ml). Kaggle benchmark: _link added once published_.
